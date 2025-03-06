@@ -32,8 +32,8 @@ Here are some of the projects I've completed so far:
 3. **Calculator**  
    A basic calculator that performs simple arithmetic operations like addition, subtraction, multiplication, and division.
 
-4. **Other Projects**  
-   (Add descriptions of any other projects you have completed so far!)
+4. **Blackjack**  
+   The popular card game blackjack were the user tries to get as close as possible to 21 while competeing against the dealer and trying not to go bust!
 
 ## Project List
 
