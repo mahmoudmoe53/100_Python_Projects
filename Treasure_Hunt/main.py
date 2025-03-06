@@ -42,3 +42,4 @@ if direction == "right":
 
 else:
     print("Game Over!")
+    
