@@ -40,31 +40,57 @@ resources = {
 }
 
 
-
+profit = 0
 
 while True:
     print(logo)
 
     coffee = input("What would you like? (espresso/latte/cappuccino)\n").lower()
 
-    ingredients = {
-
-    }
+    machine_water = 300
+    machine_coffee = 200
+    machine_milk = 100
 
     price = 0
 
 
     if coffee == "espresso":
-        ingredients = MENU["espresso"]
-        price += MENU["espresso"]["cost"]
+        if machine_water >= MENU["espresso"]["ingredients"]["water"] and machine_coffee >= MENU["espresso"]["ingredients"]["coffee"]:
+            machine_water -= MENU["espresso"]["ingredients"]["water"]
+            machine_coffee -= MENU["espresso"]["ingredients"]["coffee"]
+            price += MENU["espresso"]["cost"]
+            profit += MENU["espresso"]["cost"]
+        else:
+            print("Their is not enough resources to complete your order!")
+            break
     elif coffee == "latte":
-        ingredients = MENU["latte"]
-        price += MENU["latte"]["cost"]
+        if machine_water >= MENU["latte"]["ingredients"]["water"] and machine_coffee >= MENU["latte"]["ingredients"][
+            "coffee"] and machine_milk >= MENU["latte"]["ingredients"]["milk"]:
+            machine_water -= MENU["latte"]["ingredients"]["water"]
+            machine_coffee -= MENU["latte"]["ingredients"]["coffee"]
+            machine_milk -= MENU["latte"]["ingredients"]["milk"]
+            price += MENU["latte"]["cost"]
+            profit += MENU["latte"]["cost"]
+        else:
+            print("Their is not enough resources to complete your order!")
+            break
     elif coffee == "cappuccino":
-        ingredients = MENU["cappuccino"]
-        price += MENU["cappuccino"]["cost"]
+        if machine_water >= MENU["cappuccino"]["ingredients"]["water"] and machine_coffee >= MENU["cappuccino"]["ingredients"][
+            "coffee"] and machine_milk >= MENU["cappuccino"]["ingredients"]["milk"]:
+            machine_water -= MENU["cappuccino"]["ingredients"]["water"]
+            machine_coffee -= MENU["cappuccino"]["ingredients"]["coffee"]
+            machine_milk -= MENU["cappuccino"]["ingredients"]["milk"]
+            price += MENU["cappuccino"]["cost"]
+            profit += MENU["cappuccino"]["cost"]
+        else:
+            print("Their is not enough resources to complete your order!")
+            break
     elif coffee == "report":
-        print(resources)
+        print(f"Water: {machine_water}")
+        print(f"Milk {machine_milk}")
+        print(f"Coffee: {machine_coffee}")
+        print(f"Money: ${profit}")
+
     elif coffee == "off":
         break
 
@@ -98,6 +124,9 @@ while True:
         print("Goodbye!")
         break
     elif another == "report":
-        print(resources)
+        print(f"Water: {machine_water}")
+        print(f"Milk {machine_milk}")
+        print(f"Coffee: {machine_coffee}")
+        print(f"Money: ${profit}")
 
 
