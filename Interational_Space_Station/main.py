@@ -50,7 +50,7 @@ sunset = sunrise_data["results"]["sunset"].split("T")[1].split(":")[0]
 time_now = datetime.now().hour
 
 
-print(f"Your currently located in {my_location_data} and the time is {time_now}.\n"
+print(f"Your currently located in {my_location_data} and the time is {time_now}:00.\n"
       f"The International Space Stations current co-ordinates are {iss_coor} and will be visible from {sunset}:00 "
       f"till {sunrise}:00! ")
 
