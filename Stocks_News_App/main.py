@@ -55,7 +55,7 @@ news_data = news_response.json()["articles"]
 
 three_articles = news_data[0:3]
 
-formatted_articles = [f"Headline: {news_data['title']}.\nBrief {news_data['description']}" for news_data in three_articles]
+formatted_articles = [f"{COMPANY_NAME}: {up_down}{abs(percentage_difference)}%\nHeadline: {news_data['title']}.\nBrief {news_data['description']}" for news_data in three_articles]
 
 
 account_sid = os.environ.get("ACCOUNT_SID")
@@ -64,7 +64,7 @@ client = Client(account_sid, auth_token)
 
 for article in formatted_articles:
     message = client.messages.create(
-        body=f'{COMPANY_NAME}: {up_down}{abs(percentage_difference)} \n{formatted_articles}',
+        body=article,
         from_="whatsapp:+14155238886",
         to="whatsapp:+447776478193",
     )
