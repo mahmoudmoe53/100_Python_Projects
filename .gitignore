@@ -2,3 +2,5 @@ venv/
 .venv
 Practice
 **/.env
+Web_Development
+.vscode/
