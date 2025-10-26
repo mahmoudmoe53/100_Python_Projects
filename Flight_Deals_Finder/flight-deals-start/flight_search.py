@@ -1,6 +1,7 @@
 import requests
 import os
 from dotenv import load_dotenv
+from pprint import pprint
 
 load_dotenv()
 
@@ -27,7 +28,7 @@ class FlightSearch:
 
         data = response.json()
 
-        print(f"{data} {city_name}")
+        return data["data"][0]["iataCode"]
 
 
     def __get_new_token(self):
@@ -40,10 +41,10 @@ class FlightSearch:
             "client_id": self.__api_key,
             "client_secret": self.__password
         }
-        response = requests.post(url=f"{END_POINT}/security/oauth2/token", json=body, headers=headers)
+        response = requests.post(url=f"{END_POINT}/security/oauth2/token", data=body, headers=headers)
 
         data = response.json()
-        return data
+        return data["access_token"]
 
 
 
