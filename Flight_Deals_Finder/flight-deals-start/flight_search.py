@@ -1,6 +1,7 @@
 import requests
 import os
 from dotenv import load_dotenv
+from pprint import pprint
 
 load_dotenv()
 
@@ -45,5 +46,26 @@ class FlightSearch:
         data = response.json()
         return data["access_token"]
 
+
+
+    def get_prices(self, iata_code):
+        headers = {
+            "Authorization": f"Bearer {self.__token}"
+        }
+
+        params = {
+            "originLocationCode":"LON",
+            "destinationLocationCode":iata_code,
+            "departureDate":"2025-12-15",
+            "adults":1,
+            "nonStop": "true"
+        }
+
+
+        response = requests.get(url="https://test.api.amadeus.com/v2/shopping/flight-offers", headers=headers, params=params)
+
+        data = response.json()
+
+        pprint(data)
 
 
